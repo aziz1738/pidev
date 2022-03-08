@@ -1,0 +1,118 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Abonnement {% endblock %}
+
+{% block body %}
+    <h1>Abonnement </h1>
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            {# <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 1;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value===$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key === 'abonnements') {
+                                                    if (id !== 'error') {
+                                                        entitySelector.append('<li><b>'+value[1]+'</b><a href="/show/'+id+'"><a href="/show/'+id+'"><img class="img" src="/uploads/abonnement/'+value[0]+'" style="width: 60px; height: 60px"/></a></li>');
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>  #}
+
+    <table class="table" border="5" align="5">
+    
+    
+
+       <tr>
+            <form method="" action="{{ path('abonnement_search') }}">
+                <label>
+                    <input PLACEHOLDER="Search" type="text" name="data" class="form-control">
+                </label>
+                    <input type="submit" class="btn btn-success" value="FIND">
+            </form>
+        </tr>
+        <tr>
+                    <div>
+                <form method="post" action="{{ path('abonnement_tri') }}">
+	            <label>
+		            <select class="form-control" name="type">
+			            <option>Croissant</option>
+			            <option>Décroissant</option>
+			        </select>
+		        </label>
+		        <input type="submit" class="btn btn-success" value="Trier!">
+	            </form>
+            </div>
+        </tr>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date_debut</th>
+                <th>Date_final</th>
+                <th>Email</th>
+                <th>date de naissance</th>
+                <th>Num_tel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.name }}</td>
+                <td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ abonnement.dateFinal ? abonnement.dateFinal|date('Y-m-d') : '' }}</td>
+                <td>{{ abonnement.email }}</td>
+                <td>{{ abonnement.birthday ? abonnement.birthday|date('Y-m-d') : '' }}</td>
+                <td>{{ abonnement.numTel }}</td>
+                <td>
+
+                    <a class="btn btn-success" href="{{ path('abonnement_edit', {'id': abonnement.id}) }}">edit</a>
+                <td> {{ include('abonnement/_delete_form.html.twig') }} </td>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        
+        </tbody>
+    </table>
+
+
+    
+    <br>
+    <a href="{{ path('abonnement_pdf_back') }}" class="btn btn-info btn-icon-text" >pdf</a>
+
+{% endblock %}

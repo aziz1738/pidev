@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subscription front{% endblock %}
+
+{% block body %}
+    <section class="hero-section">
+        <div class="hs-slider owl-carousel" style="display: initial">
+            <div class="hs-item set-bg" data-setbg="{{asset('front/img/hero/hero-1.jpg  ')}}" style="background-image: url('front/img/hero/hero-1.jpg');">
+                <div class="example-wrapper">
+                    <center>      <h1 style="color: whitesmoke">Contact us</h1>  </center>
+                    <h4 style="color: whitesmoke">leave feedback here</h4>
+                    <hr>
+
+                 <div class="row">
+                        <div class="col-md-6">
+                            <h2 >{{form(contactForm) }}</h2>
+                            <hr>
+                            <!-- <button type="submit" class="btn btn-success btn-block">search</button> -->
+
+                        </div>
+
+
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+{% endblock %}

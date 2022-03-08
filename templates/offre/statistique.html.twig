@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="content-body">
+     <div class="container-fluid">
+     <div class="page-titles">
+     <!doctype html>
+     <html lang="en">
+     <center>
+         <head>
+             <meta charset="UTF-8">
+             <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+             <meta name="viewport"
+                   content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+             <meta http-equiv="X-UA-Compatible" content="ie=edge">
+             <title>Document</title>
+         </head>
+         <body>
+
+         <div style="width: 75%">
+             <canvas id="myChart"></canvas>
+         </div>
+         {% set nbGOLD=0%}
+         {% set nbSILVER=0%}
+         {% set nbBRONZE=0%}
+
+
+         {% for f in Reg %}
+
+
+             {% if 'GOLD' == f.idoffre %}
+                 {% set  nbGOLD=nbGOLD+1 %}
+
+             {%endif %}
+
+             {% if 'SILVER' ==  f.idoffre %}
+                 {% set  nbSILVER=nbSILVER+1 %}
+             {%endif %}
+
+             {% if 'BRONZE' ==  f.idoffre %}
+                 {% set  nbBRONZE=nbBRONZE+1 %}
+             {%endif %}
+
+
+         {% endfor %}
+
+         <script>
+             Chart.defaults.global.title.display=true;
+         </script>
+
+         <script language="javascript">
+             var ctx = document.getElementById('myChart').getContext('2d');
+             var chart = new Chart(ctx, {
+                 // The type of chart we want to create
+                 type: 'line',
+
+                 // The data for our dataset
+                 data: {
+                     labels: ['','GOLD','SILVER', 'BRONZE'],
+                     datasets: [{
+                         label: 'Nombres Totales des Restaurants: {{Reg|length}}',
+                         backgroundColor: 'rgb(255, 99, 132)',
+                         borderColor: 'rgb(255, 99, 101)',
+                         data: [0,{{nbGOLD}},{{nbSILVER}}, {{nbBRONZE}}]
+                     }]
+                 },
+
+                 // Configuration options go here
+                 options: {
+                     title:{
+
+                         text:"Listes des offres"
+                     }
+
+                 }
+             });
+         </script>
+
+
+
+
+         </body>
+     </center>
+     </html>
+ {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+{% block show %}
+<br> <br> <br><br><br><br><br>
+    <br>
+
+
+    {% for offre in offres %}
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-8">
+            <div class="ps-item">
+                <h3>Class drop-in</h3>
+                <div class="pi-price">
+                    <h2> {{ offre.typeAbonnement }}</h2>   <h2>{{ offre.solde }}</h2>
+                    <span>SINGLE CLASS</span>
+                </div>
+
+
+                <ul>
+                    <li>Free riding</li>
+                    <li>Unlimited equipments</li>
+                    <li>Personal trainer</li>
+                    <li>Weight losing classes</li>
+                    <li>Month to mouth</li>
+                    <li>No time restriction</li>
+                </ul>
+                <a href={{path('abonnement_new')}} class="primary-btn pricing-btn">Join us</a>
+                <a href={{path('contact')}} class="primary-btn pricing-btn">Feedback</a>
+
+
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+
+{% endblock %}

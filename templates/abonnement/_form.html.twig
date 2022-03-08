@@ -1,0 +1,32 @@
+
+
+
+
+{{ form_start(form) }}
+<center>
+    <fieldset>
+        {{ form_row (form.name,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom'}})}}
+    </fieldset>
+
+<fieldset>
+    {{ form_row(form.email,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Adresse Email'}})}}
+</fieldset>
+<fieldset>
+    {{ form_row(form.num_tel,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Numero de Téléphone'}})}}
+</fieldset>
+
+<fieldset>
+    {{ form_row (form.date_debut, {'attr':{'placeholder':''}}) }}
+</fieldset>*<fieldset>
+    {{ form_row (form.date_final, {'attr':{'placeholder':''}}) }}
+</fieldset>
+<fieldset>
+    {{ form_row (form.birthday, {'attr':{'placeholder':''}}) }}
+</fieldset>
+</center>
+<br><br>
+   
+    <button class="btn btn-success">{{ button_label|default('Create') }}</button>
+
+{{ form_end(form) }}
+

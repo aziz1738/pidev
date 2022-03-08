@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<section class="hero-section">
+        <div class="hs-slider owl-carousel" style="display: initial">
+            <div class="hs-item set-bg" data-setbg="{{asset('front/img/hero/hero-1.jpg  ')}}" style="background-image: url('front/img/hero/hero-1.jpg');">
+                <div class="example-wrapper">
+                                        <h1 style="color: whitesmoke">SplashFit QR-Code ✅</h1> 
+                                        <h4 style="color: whitesmoke">Type your Id to see your subscription details</h4>
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {{ form_start(form) }}
+                                                {{ form_row(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Recherche'}}) }}
+                                                <hr>
+                                                <button type="submit" class="btn btn-success btn-block">search</button>
+                                                {{ form_end(form) }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if qrCode %}
+                                                    <img src="{{ qrCode }}" alt="qr-code">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+
+  
+		<center> <h4>Liste Des abonnements </h4>
+	    	
+       
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                             <th>Name</th>
+                                               
+                                                <th >email</th>
+                                               
+                                                
+                                                
+                                              
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for  abonnement in  abonnements %}
+                                            <tr>
+                                               
+                                                <td >{{ abonnement.name }}</td>
+                                                <td >{{ abonnement.email}}</td>
+                                                
+                                                
+                                               
+                                                
+                                            </tr>
+                                        {% endfor %}
+                                   
